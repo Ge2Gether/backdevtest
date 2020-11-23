@@ -48,10 +48,13 @@ Para o teste esse password é apenas um texto plano, sem nenhum tipo de criptogr
 Endpoint POST /auth
 
 **Body**
+
+```
 {
     "email": "email@usuario.com.br",
     "pwd": "123456@"
 }
+```
 
 **Response**
 
