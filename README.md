@@ -41,25 +41,64 @@ Os dados estão em uma base Firebase Firestore com as configurações
 Precisamos autenticar um usuario através de um POST
 com o JSON { "email": "email@usuario.com.br", "pwd": "123456@" } e receber um token JWT confirmando a autenticação. Esse token precisa ter encodado nele o email, um id e o papel do usuário (ROLE). Suponha que o ID do usuário é "2020" e o ROLE = "common".
 
-Sua tarefa como backender é criar um endpoint em node JS para o serviço de autenticação da aplicação. Vamos lá?
+Sua tarefa como backender é criar um endpoint em node JS para o serviço de autenticação da aplicação.
 
 Para o teste esse password é apenas um texto plano, sem nenhum tipo de criptografia.
 
-#### 2) Supondo que o modelo de perfil é retornado por um GET em /profiles/123
+Endpoint POST /auth
+
+**Body**
+{
+    "email": "email@usuario.com.br",
+    "pwd": "123456@"
+}
+
+**Response**
+
+**Status 200** se autenticado com sucesso
 
 ```
 {
-    "id": 123
-    "name": "Nome perfil",
-    "likes": 1
+    "token": "--O TOKEN JWT--"
 }
 ```
 
-Deve fazer um GET e obter o perfil de ID 123.
+**Status 401** quando não as credenciais não possuerem permissão.
+
+#### 2) Obter um perfil de usuário 
+
+No banco firestore temos um perfil de teste.
+
+Realizar um request para obter o perfil de teste com um `GET` em `/profiles/123`, enviar no header o cabeçalho `Authorization`.
+
+**Header da Request deve conter**
+
+```
+Authorization: bearer --O TOKEN JWT--
+```
+
+**Response**
+
+```
+{
+    "data": {
+        "id": 123
+        "name": "Nome perfil",
+        "likes": 1
+    }
+}
+```
 
 #### 3) Dar um like no perfil obtido
 
 Fazendo um POST /like/123
+
+
+**Header da Request deve conter**
+
+```
+Authorization: bearer --O TOKEN JWT--
+```
 
 **Body**
 
