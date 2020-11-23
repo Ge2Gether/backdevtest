@@ -45,7 +45,7 @@ Sua tarefa como backender é criar um endpoint em node JS para o serviço de aut
 
 Para o teste esse password é apenas um texto plano, sem nenhum tipo de criptografia.
 
-Endpoint POST /auth
+Endpoint `POST /auth`
 
 **Body**
 
@@ -66,7 +66,7 @@ Endpoint POST /auth
 }
 ```
 
-**Status 401** quando não as credenciais não possuerem permissão.
+**Status 401** quando as credenciais não possuerem permissão.
 
 #### 2) Obter um perfil de usuário 
 
@@ -94,7 +94,7 @@ Authorization: bearer --O TOKEN JWT--
 
 #### 3) Dar um like no perfil obtido
 
-Fazendo um POST /like/123
+Fazendo um `POST /like/123`
 
 
 **Header da Request deve conter**
