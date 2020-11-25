@@ -1,4 +1,6 @@
-const UsuarioModel = require('../models/UsuarioModel');
+const select = require('../models/generic/Select');
+
+const table = '';
 
 module.exports = {
     
