@@ -62,10 +62,10 @@ module.exports = {
                                 (a[key].operador == 'IN' || a[key].operador == 'in') ||
                                 (a[key].operador == 'NOT IN' || a[key].operador == 'not in'))
                             {
-                                conditions += `${a[key].campo} ${a[key].operador} $${(count++)} `;
+                                conditions += `${a[key].campo} ${a[key].operador} ? `;
                             }
                             else{
-                                conditions += `${a[key].operador} ${a[key].campo} ${a[key].comparador} $${(count++)} `;
+                                conditions += `${a[key].operador} ${a[key].campo} ${a[key].comparador} ? `;
                             }
 
                             values.push(a[key].valor);
@@ -115,29 +115,13 @@ module.exports = {
             }
         }
        
-        try{
-            var {rows, rowCount } = await db.query(query, values);
-
-            return {status : 200, rows, rowCount};
+        try{            
+            var payload = await db.query(query, values);
+            
+            return {status : 200, payload};
         }
         catch(error){
             return {status : 400, error}
         }
     }
 }
-
-// function excludeField(data, fields){
-
-//     var resultado = [];
-
-//     for(var key in data){
-        
-//         for(var item in fields){            
-//             delete data[key][fields[item]];
-//         }
-
-//         resultado.push(data[key]);
-//     }
-
-//     return resultado;
-// }

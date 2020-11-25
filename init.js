@@ -1,10 +1,9 @@
 'use strict';
 
 const express = require('express');
+var bodyParser = require('body-parser');
 
 const api = express();
-
-require('./api/routes/index')(api);
 
 const allowCors = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'localhost:8080');
@@ -16,5 +15,11 @@ const allowCors = (req, res, next) => {
 };
 
 api.use(allowCors);
-api.use(express.json());
+api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({
+    extended : true
+}));
+
+require('./api/routes/index')(api);
+
 api.listen(8080, () => console.log('Api rodando!'));

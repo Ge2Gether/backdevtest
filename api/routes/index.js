@@ -1,5 +1,7 @@
-const UsuarioRoute = require('./UsuarioRoute');
+'use strict';
 
-module.exports = (api) => {
-   UsuarioRoute(api)
+const AuthRoute = require('./AuthRoute');
+
+module.exports = (api) => {   
+   AuthRoute(api);
 }
