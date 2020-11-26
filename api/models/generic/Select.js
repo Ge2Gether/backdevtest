@@ -85,34 +85,6 @@ module.exports = {
                 query = `SELECT * FROM ${params.table}`;
                 values = null;
             }
-
-            if(params.data && params.data.ordenacao && params.data.ordenacao.length > 0){
-
-                var ordenacao = [JSON.parse(JSON.stringify(params.data.ordenacao))];
-                var order = '';
-
-                ordenacao.forEach((a) => {
-                    for(var key in a){
-                        order += ` ${a[key].termo} ${a[key].valor} `;
-                    }
-                });
-
-                query += order
-            }
-
-            if(params.data && params.data.limites && params.data.limites.length > 0){
-
-                var limites = [JSON.parse(JSON.stringify(params.data.limites))];
-                var limits = '';
-
-                limites.forEach((a) => {
-                    for(var key in a){
-                        limits += `${a[key].termo} ${a[key].valor} `
-                    }
-                });
-
-                query += limits
-            }
         }
        
         try{            

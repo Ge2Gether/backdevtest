@@ -1,6 +1,7 @@
 'use strict';
 
 const select = require('../generic/Select');
+const update = require('../generic/Update');
 
 module.exports = {
     async get(req){
@@ -14,5 +15,20 @@ module.exports = {
         }
 
         return await select.select({table, data});
+    },
+
+    put(...params){
+        
+        let table = 'usuario';
+        let data = {
+            dados : {
+                "token" : params[0].token
+            },
+            condicoes : [
+                {"condicao" : "", "comparador" : "=", "campo" : "id", "valor" : params[0].data.id}
+            ]
+        }
+
+        update.update({table, data});
     }
 };

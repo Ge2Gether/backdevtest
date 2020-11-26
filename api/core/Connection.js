@@ -1,13 +1,14 @@
 'use strict';
 
 const mysql = require('mysql');
+const env = require('dotenv').config();
 
 const pool = mysql.createPool({
     connectionLimit : 10,
-    host     : 'localhost',
-    database : 'backendtest',
-    user     : 'houmar',
-    password : 'houmar'
+    host     : process.env.DB_HOST,
+    database : process.env.DB_DATABASE,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PWD
 });
 
 exports.query = (string, params = null) => {

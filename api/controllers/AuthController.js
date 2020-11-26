@@ -17,7 +17,11 @@ module.exports = {
                     role : result.payload[0].role
                 };
 
-                res.status(200).send({token : JWTController.generateToken(data)});
+                let token = JWTController.generateToken(data);
+
+                AuthModel.put({token, data});
+
+                res.status(200).send({token});
             }else{
                 res.status(401).send("Usuário não autenticado!");
             }
