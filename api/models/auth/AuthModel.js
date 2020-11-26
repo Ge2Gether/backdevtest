@@ -4,7 +4,7 @@ const select = require('../generic/Select');
 const update = require('../generic/Update');
 
 module.exports = {
-    async get(req){
+    async getUser(req){
 
         let table = 'usuario';
         let data = {
@@ -15,6 +15,18 @@ module.exports = {
         }
 
         return await select.select({table, data});
+    },
+
+    async getToken(token){
+
+        let table = 'usuario';
+        let data = {
+            condicoes : [
+                {"operador" : "", "comparador" : "=", "campo" : "token", "valor" : token}
+            ]
+        }
+
+        return await select.select({table, data})
     },
 
     put(...params){

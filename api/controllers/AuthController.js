@@ -6,7 +6,7 @@ const JWTController = require('./JWTController');
 module.exports = {
     async auth(req, res){
 
-        let result = await AuthModel.get(req);
+        let result = await AuthModel.getUser(req);
         
         if(result.status == 200){
             if(result.payload.length > 0){
@@ -27,6 +27,17 @@ module.exports = {
             }
         }else{
             res.status(result.status);
+        }
+    },
+
+    async authToken(token){
+
+        let result = await AuthModel.getToken(token);
+        
+        if(result.payload.length > 0){
+            return true;
+        }else{
+            return false;
         }
     }
 };
