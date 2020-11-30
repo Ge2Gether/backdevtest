@@ -136,8 +136,3 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 ## Dúvidas?
 
 Quaisquer dúvidas que você venha a ter, consulte as issues para ver se alguém já não a fez e caso você não ache sua resposta, abra você mesmo uma nova issue!
-
-### Boa sorte!
-
-
-
