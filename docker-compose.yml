@@ -1,0 +1,7 @@
+backend_test:
+  build: ./
+  container_name: "backend_test"
+  env_file:
+    - ./.env
+  ports:
+    - "3000:3000"
