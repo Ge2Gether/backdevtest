@@ -6,7 +6,7 @@ RUN apt-get update -y
 
 RUN mkdir -p $dir_base
 ADD code/ "$dir_base/"
-ADD .env "$dir_base/"
+# ADD .env "$dir_base/"
 
 WORKDIR $dir_base
 RUN npm install
