@@ -9,18 +9,17 @@ admin.initializeApp({
 const db = admin.firestore();
 
 
-async function getInfo(id=null){
+async function getInfo(id=0){
   console.log('Started firebase procedure');  
-  profiles = db.collection('profiles')
-  const query = await profiles.where("id", "==", id);
+  profiles = db.collection('profiles');
+  const query = await profiles.where("profiles.id", "==", parseInt(id));
   console.log("get id:",id);
-  query.get()
-  .then((snapshot) => {
+  await query.get().then((snapshot) => {
     snapshot.forEach((doc) => {
-      if(doc.data.id == id){
+      if(doc.id == id){
         console.log('YESYESYESYESYESYES',doc.data());
       }
-      
+      console.log(doc);
     });
   })
   .catch((err) => {
