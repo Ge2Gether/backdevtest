@@ -1,10 +1,12 @@
-exports.getProfile = async function (req,res, id=0){
+const firebase =  require('../firebase')
+
+exports.getProfile = async function (req,res){
     try {
+        
         console.log('Started profile procedure');
         var {id} = req.params
         const token = req.headers.authorization
-
-        // console.log(token);
+        var info = firebase.getInfo(id)
 
         if(!id){
             res.sendStatus(404)
@@ -18,9 +20,9 @@ exports.getProfile = async function (req,res, id=0){
         res.send({
             status:200,
             data: {
-                "id": 123,
-                "name": "Nome perfil",
-                "likes": 1
+                "id": 123, //info.id
+                "name": "Nome perfil", //indo.name
+                "likes": 1 //info.likes
             }
         })
         return

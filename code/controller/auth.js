@@ -6,6 +6,8 @@ exports.authorize = async function (req,res){
             pwd
         } = req.body
 
+        console.log(email,pwd, "\n");
+
         if(!email || !pwd){
             res.sendStatus(401)
             return

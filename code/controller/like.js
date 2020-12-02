@@ -1,3 +1,5 @@
+const firebase =  require('../firebase')
+
 exports.likeProfile = async function (req,res){
     try {
         console.log('Started like procedure');
@@ -8,7 +10,7 @@ exports.likeProfile = async function (req,res){
          } = req.body
 
         const token = req.headers.authorization
-
+        var info = firebase.getInfo(id)
         // console.log(token);
 
         if(!id || !from || !to){
@@ -23,9 +25,9 @@ exports.likeProfile = async function (req,res){
         res.send({
             status:200,
             data: {
-                "id": 123,
-                "name": "Nome perfil",
-                "likes": (1+1)
+                "id": 123, //info.id
+                "name": "Nome perfil", //info.name
+                "likes": (1+1) //info.likes
             }
         })
         return 

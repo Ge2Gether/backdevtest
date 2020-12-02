@@ -8,9 +8,23 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-module.exports = async function getInfo(){
-  const snapshot = await db.collection('users').get();
-  snapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
+
+async function getInfo(id=null){
+  console.log('Started firebase procedure');  
+  profiles = db.collection('profiles')
+  const query = await profiles.where("id", "==", id);
+  console.log("get id:",id);
+  query.get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      if(doc.data.id == id){
+        console.log('YESYESYESYESYESYES',doc.data());
+      }
+      
+    });
+  })
+  .catch((err) => {
+    console.log('Error getting documents', err);
   })
 }
+module.exports.getInfo = getInfo
