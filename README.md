@@ -1,3 +1,15 @@
+## Passos para teste do código - Guilherme Adler
+Caso 1 : Via docker-compose  
+    Basta rodar ``` docker-compose up ```  
+Caso 2 : Via Npm  
+> É necessário fornecer um arquivo chamado firebasekeys.json com as informações de config do firebase.  
+```
+  mv firebasekeys.json code/.
+  cd code/  
+  npm install  
+  npm start  
+```
+
 # Teste para candidatos à vaga de Desenvolvedor Backend.
 
 Olá caro desenvolvedor, nesse teste analisaremos seu conhecimento geral e inclusive velocidade de desenvolvimento. Abaixo explicaremos tudo o que será necessário.
